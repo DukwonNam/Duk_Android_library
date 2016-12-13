@@ -2,6 +2,7 @@ package com.duk.lab.android.camera;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import com.duk.lab.android.common.CommonFragmentActivity;
 
@@ -11,7 +12,7 @@ import com.duk.lab.android.common.CommonFragmentActivity;
 
 public class CameraActivity extends CommonFragmentActivity {
     @Override
-    protected Fragment getFragment() {
+    protected Fragment createFragment() {
         return new CameraFragment();
     }
 

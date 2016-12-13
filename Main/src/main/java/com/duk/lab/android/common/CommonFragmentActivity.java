@@ -5,7 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.duk.lab.android.R;
 
@@ -13,8 +13,8 @@ import com.duk.lab.android.R;
  * Created by Duk on 2016-12-13.
  */
 
-public abstract class CommonFragmentActivity extends FragmentActivity {
-    private final Fragment mFragment = getFragment();
+public abstract class CommonFragmentActivity extends AppCompatActivity {
+    private final Fragment mFragment = createFragment();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,5 +26,9 @@ public abstract class CommonFragmentActivity extends FragmentActivity {
         transaction.commit();
     }
 
-    protected abstract Fragment getFragment();
+    protected Fragment getFragment() {
+        return mFragment;
+    }
+
+    protected abstract Fragment createFragment();
 }

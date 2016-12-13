@@ -8,7 +8,7 @@ import com.duk.lab.android.common.CommonFragmentActivity;
 
 public class MainActivity extends CommonFragmentActivity {
     @Override
-    protected Fragment getFragment() {
+    protected Fragment createFragment() {
         return new MainFragment();
     }
 }
