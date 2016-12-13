@@ -1,13 +1,14 @@
 package com.duk.lab.android;
 
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.duk.lab.android.common.CommonFragmentActivity;
 
+public class MainActivity extends CommonFragmentActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected Fragment getFragment() {
+        return new MainFragment();
     }
 }
