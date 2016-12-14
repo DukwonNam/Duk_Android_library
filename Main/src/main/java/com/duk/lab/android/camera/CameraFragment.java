@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ProviderInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -141,29 +140,38 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
         switch (requestCode) {
             case REQUEST_SINGLE_SHOT:
                 if (resultCode == Activity.RESULT_OK) {
-                    showSingleShotImage(data);
+                    Log.i("test_duk", "onActivityResult REQUEST_SINGLE_SHOT data=" + data);
+
+                    final Bundle extras = data.getExtras();
+                    final Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    final ImageView imageView = new ImageView(getActivity());
+                    final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    imageView.setImageBitmap(imageBitmap);
+                    imageView.setLayoutParams(params);
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setView(imageView);
+                    builder.create().show();
                 }
                 break;
             case REQUEST_SINGLE_SHOT_SAVING:
                 if (resultCode == Activity.RESULT_OK) {
-//                    galleryAddPic();
+                    Log.i("test_duk", "onActivityResult REQUEST_SINGLE_SHOT_SAVING");
+                    galleryAddPic();
+
+                    final ImageView imageView = new ImageView(getActivity());
+                    final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    File f = new File(mCurrentPhotoPath);
+                    Uri contentUri = Uri.fromFile(f);
+                    imageView.setImageURI(contentUri);
+                    imageView.setLayoutParams(params);
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setView(imageView);
+                    builder.create().show();
                 }
                 break;
         }
-    }
-
-    private void showSingleShotImage(Intent data) {
-        Log.i("test_duk", "showSingleShotImage data=" + data);
-        final Bundle extras = data.getExtras();
-        final Bitmap imageBitmap = (Bitmap) extras.get("data");
-        final ImageView imageView = new ImageView(getActivity());
-        final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        imageView.setImageBitmap(imageBitmap);
-        imageView.setLayoutParams(params);
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(imageView);
-        builder.create().show();
     }
 
     private void galleryAddPic() {
