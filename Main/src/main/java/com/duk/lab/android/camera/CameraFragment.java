@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -13,7 +14,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -106,34 +106,34 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             // Create the File where the photo should go
             File photoFile = null;
             try {
-                photoFile = createImageFile();
+                // Create an image file name
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String imageFileName = "JPEG_" + timeStamp + "_";
+                File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//                File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                Log.i("test_duk", "storageDir=" + storageDir);
+                photoFile = File.createTempFile(
+                        imageFileName,  /* prefix */
+                        ".jpg",         /* suffix */
+                        storageDir      /* directory */
+                );
+
+                // Save a file: path for use with ACTION_VIEW intents
+                mCurrentPhotoPath = photoFile.getAbsolutePath();
             } catch (IOException ex) {
             }
 
+            Log.i("test_duk", "photoFile=" + photoFile);
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(getActivity(), "com.duk.lab.android", photoFile);
+//                ProviderInfo info = getActivity().getPackageManager()
+//                        .resolveContentProvider("com.duk.lab.android.fileprovider", PackageManager.GET_META_DATA);
+//                Log.i("test_duk", "info=" + info);
+                Uri photoURI = FileProvider.getUriForFile(getActivity(), "com.duk.lab.android.fileprovider", photoFile);
                 singleShotIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(singleShotIntent, REQUEST_SINGLE_SHOT_SAVING);
             }
         }
     }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -146,13 +146,14 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                 break;
             case REQUEST_SINGLE_SHOT_SAVING:
                 if (resultCode == Activity.RESULT_OK) {
-                    galleryAddPic();
+//                    galleryAddPic();
                 }
                 break;
         }
     }
 
     private void showSingleShotImage(Intent data) {
+        Log.i("test_duk", "showSingleShotImage data=" + data);
         final Bundle extras = data.getExtras();
         final Bitmap imageBitmap = (Bitmap) extras.get("data");
         final ImageView imageView = new ImageView(getActivity());
@@ -166,6 +167,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     }
 
     private void galleryAddPic() {
+        Log.i("test_duk", "galleryAddPic");
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
