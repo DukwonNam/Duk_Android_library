@@ -3,6 +3,7 @@ package com.duk.lab.android.camera;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -47,7 +48,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     private static final int REQUEST_SINGLE_SHOT_SAVING = 0x200;
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
             R.id.singleShot,
-            R.id.singleShotSaving
+            R.id.singleShotSaving,
+            R.id.viewThroughCamera
     };
 
     private String mCurrentPhotoPath;
@@ -88,6 +90,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                 if (checkCameraPermission(REQUEST_SINGLE_SHOT_SAVING) && checkStoragePermission(REQUEST_SINGLE_SHOT_SAVING)) {
                     singleShotSaving();
                 }
+                break;
+            case R.id.viewThroughCamera:
+                Context context = getActivity();
+                Intent intent = new Intent(context, CameraViewActivity.class);
+                context.startActivity(intent);
                 break;
         }
     }

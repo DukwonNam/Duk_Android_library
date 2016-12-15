@@ -5,13 +5,12 @@ import android.app.Fragment;
 import com.duk.lab.android.common.CommonFragmentActivity;
 
 /**
- * Created by Duk on 2016-12-13.
+ * Created by Duk on 2016-12-15.
  */
 
-public class CameraActivity extends CommonFragmentActivity {
+public class CameraViewActivity extends CommonFragmentActivity {
     @Override
     protected Fragment createFragment() {
-        return new CameraFragment();
+        return new CameraViewFragment();
     }
-
 }
