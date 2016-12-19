@@ -77,20 +77,24 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
             WindowManager wm = (WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE);
             int orientation = 0;
             switch (wm.getDefaultDisplay().getRotation()) {
+                // Landscape on left side bottom
                 case Surface.ROTATION_90:
-                    orientation = 90;
-                    break;
-                case Surface.ROTATION_180:
-                    orientation = 180;
-                    break;
-                case Surface.ROTATION_270:
-                    orientation = 270;
-                    break;
-                case Surface.ROTATION_0:
-                default:
                     orientation = 0;
                     break;
+                // Landscape on right side bottom
+                case Surface.ROTATION_270:
+                    orientation = 180;
+                    break;
+
+                // Portrait
+                case Surface.ROTATION_0:
+                case Surface.ROTATION_180:
+                default:
+                    orientation = 90;
+                    break;
             }
+            Log.i("test_duk", "wm.getDefaultDisplay().getRotation()=" + wm.getDefaultDisplay().getRotation());
+            Log.i("test_duk", "orientation=" + orientation);
             mCamera.setDisplayOrientation(orientation);
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();

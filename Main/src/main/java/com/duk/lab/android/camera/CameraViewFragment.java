@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class CameraViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("test_duk", "onCreateView");
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.camera_view, container, false);
         FrameLayout cameraViewLayout = (FrameLayout) view.findViewById(R.id.cameraViewLayout);
