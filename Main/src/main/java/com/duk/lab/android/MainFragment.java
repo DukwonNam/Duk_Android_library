@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
 
 /**
@@ -24,6 +25,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onCreateView(inflater, container, savedInstanceState);
 
         final View view = inflater.inflate(R.layout.main, container, false);
+        final Button calendarBotton = (Button) view.findViewById(R.id.calendarBotton);
+        if (calendarBotton != null) {
+            calendarBotton.setOnClickListener(this);
+        }
         final Button cameraBotton = (Button) view.findViewById(R.id.cameraBotton);
         if (cameraBotton != null) {
             cameraBotton.setOnClickListener(this);
@@ -39,9 +44,22 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
 
         switch (v.getId()) {
+            case R.id.calendarBotton:
+                jumpToCalendar();
+                break;
             case R.id.cameraBotton:
                 jumpToCamera();
                 break;
+        }
+    }
+
+    private void jumpToCalendar() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), CalendarActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // Do nothing
         }
     }
 

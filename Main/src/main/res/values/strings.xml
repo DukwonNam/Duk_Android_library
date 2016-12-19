@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">My_Android_library</string>
+
+    <string name="calendar_month_formatter">"MM.yyyy"</string>
+    <string name="calendar_day_title_sunday">Sun</string>
+    <string name="calendar_day_title_monday">Mon</string>
+    <string name="calendar_day_title_tuesday">Tue</string>
+    <string name="calendar_day_title_wednesday">Wed</string>
+    <string name="calendar_day_title_thursday">Thu</string>
+    <string name="calendar_day_title_friday">Fri</string>
+    <string name="calendar_day_title_saturday">Sat</string>
 </resources>
