@@ -30,7 +30,8 @@ public class CalendarFragment extends Fragment {
         mCalendarContainer.removeAllViews();
         final CalendarView calendarView = new CalendarView(getActivity());
         calendarView.setMonth(Calendar.getInstance(), false);
-        mCalendarContainer.addView(calendarView);
+//        mCalendarContainer.addView(calendarView);
+        mCalendarContainer.setVisibility(View.GONE);
 
         return view;
     }
