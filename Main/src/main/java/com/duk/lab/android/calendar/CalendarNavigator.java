@@ -23,7 +23,7 @@ public class CalendarNavigator extends FrameLayout {
     private CalendarPagerAdapter mCalendarPagerAdapter;
 
     private Calendar mCurrMonth;
-    private int mCurrPosition;
+    private int mDefaultPosition;
     private List<Calendar> mMonthList;
 
     public CalendarNavigator(Context context) {
@@ -47,7 +47,7 @@ public class CalendarNavigator extends FrameLayout {
         makeMonthList();
         mCalendarPagerAdapter = new CalendarPagerAdapter(getContext(), mMonthList);
         mCalendarPager.setAdapter(mCalendarPagerAdapter);
-        mCalendarPager.setCurrentItem(mCurrPosition);
+        mCalendarPager.setCurrentItem(mDefaultPosition);
     }
 
     private void makeMonthList() {
@@ -63,7 +63,7 @@ public class CalendarNavigator extends FrameLayout {
             mMonthList.add(0, monthTraveler);
         }
 
-        mCurrPosition = mMonthList.size();
+        mDefaultPosition = mMonthList.size();
         mMonthList.add((Calendar) mCurrMonth.clone());
 
         monthTraveler = mCurrMonth;
