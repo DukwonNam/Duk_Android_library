@@ -30,7 +30,7 @@ public class HttpConnectionHelper {
 
         @Override
         protected String doInBackground(Void... params) {
-            return null;
+            return mUrlString;
         }
 
         @Override

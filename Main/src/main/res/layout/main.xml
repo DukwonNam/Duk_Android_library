@@ -32,7 +32,7 @@
                     android:text="Calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/calendarBotton"/>
+                    android:id="@+id/calendarButton"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,7 +42,17 @@
                     android:text="Camera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cameraBotton"/>
+                    android:id="@+id/cameraButton"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:text="Connection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/connectionButton"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

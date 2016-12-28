@@ -12,12 +12,18 @@ import android.widget.Button;
 
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
+import com.duk.lab.android.connection.ConnectionActivity;
 
 /**
  * Created by Duk on 2016-12-13.
  */
 
 public class MainFragment extends Fragment implements View.OnClickListener {
+    private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
+            R.id.calendarButton,
+            R.id.cameraButton,
+            R.id.connectionButton
+    };
 
     @Nullable
     @Override
@@ -25,13 +31,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onCreateView(inflater, container, savedInstanceState);
 
         final View view = inflater.inflate(R.layout.main, container, false);
-        final Button calendarBotton = (Button) view.findViewById(R.id.calendarBotton);
-        if (calendarBotton != null) {
-            calendarBotton.setOnClickListener(this);
-        }
-        final Button cameraBotton = (Button) view.findViewById(R.id.cameraBotton);
-        if (cameraBotton != null) {
-            cameraBotton.setOnClickListener(this);
+        for (int resId : CLICK_EVENT_ID_ARRAY) {
+            view.findViewById(resId).setOnClickListener(this);
         }
 
         return view;
@@ -44,11 +45,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
 
         switch (v.getId()) {
-            case R.id.calendarBotton:
+            case R.id.calendarButton:
                 jumpToCalendar();
                 break;
-            case R.id.cameraBotton:
+            case R.id.cameraButton:
                 jumpToCamera();
+                break;
+            case R.id.connectionButton:
+                jumpToConnection();
                 break;
         }
     }
@@ -66,6 +70,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private void jumpToCamera() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), CameraActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // Do nothing
+        }
+    }
+
+    private void jumpToConnection() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), ConnectionActivity.class);
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
