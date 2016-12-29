@@ -2,6 +2,14 @@ package com.duk.lab.android.connection;
 
 import android.os.AsyncTask;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
 /**
  * Created by Duk on 2016-12-22.
  */
@@ -30,7 +38,26 @@ public class HttpConnectionHelper {
 
         @Override
         protected String doInBackground(Void... params) {
-            return mUrlString;
+            String result = mUrlString;
+            try {
+                final URL url = new URL(mUrlString);
+                final URLConnection urlConnection = url.openConnection();
+                urlConnection.connect();
+
+                final BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                final StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                result = sb.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
         }
 
         @Override
