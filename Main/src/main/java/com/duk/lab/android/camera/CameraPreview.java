@@ -1,9 +1,7 @@
 package com.duk.lab.android.camera;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.hardware.Camera;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
