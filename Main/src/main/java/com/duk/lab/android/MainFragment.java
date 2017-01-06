@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
+import com.duk.lab.android.qrcode.QRCodeActivity;
 
 /**
  * Created by Duk on 2016-12-13.
@@ -22,6 +23,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
             R.id.calendarButton,
             R.id.cameraButton,
+            R.id.qrcodeButton,
             R.id.connectionButton
     };
 
@@ -51,6 +53,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             case R.id.cameraButton:
                 jumpToCamera();
                 break;
+            case R.id.qrcodeButton:
+                jumpToQRCode();
+                break;
             case R.id.connectionButton:
                 jumpToConnection();
                 break;
@@ -70,6 +75,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private void jumpToCamera() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), CameraActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // Do nothing
+        }
+    }
+
+    private void jumpToQRCode() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), QRCodeActivity.class);
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {

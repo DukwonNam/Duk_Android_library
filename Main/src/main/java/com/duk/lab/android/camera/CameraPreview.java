@@ -64,11 +64,13 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         List<Camera.Size> supportedSizeList = cameraParams.getSupportedPreviewSizes();
 //        supportedSizeList = cameraParams.getSupportedPictureSizes();
         Camera.Size size = getBestMatchedSize(supportedSizeList, width, height);
+        Log.i("test_duk", "size.height=" + size.height + ", size.width=" + size.width);
         if (width != size.width || height != size.height) {
             final ViewGroup.LayoutParams viewParams = getLayoutParams();
             viewParams.height = size.height;
             viewParams.width = size.width;
             setLayoutParams(viewParams);
+            Log.i("test_duk", "viewParams.height=" + viewParams.height + ", viewParams.width=" + viewParams.width);
             invalidate();
             return;
         }
@@ -78,7 +80,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         Log.i("test_duk", "ratio=" + ratio);
 //        cameraParams.setPreviewSize(width, (int)(height * ratio));
         cameraParams.setPreviewSize(width, height);
-        cameraParams.setPictureSize(width, height);
+//        cameraParams.setPictureSize(width, height);
         mCamera.setParameters(cameraParams);
 
         // set preview size and make any resize, rotate or
