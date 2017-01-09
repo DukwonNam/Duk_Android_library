@@ -11,6 +11,8 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
  * Created by dukwonnam on 2017. 1. 6..
+ *
+ * Referenced to https://www.numetriclabz.com/android-qr-code-scanner-using-zxingscanner-library-tutorial/
  */
 
 public class QRCodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {

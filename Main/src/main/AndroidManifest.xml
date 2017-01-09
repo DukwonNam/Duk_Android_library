@@ -39,6 +39,8 @@
 
         <activity android:name=".qrcode.QRCodeScannerActivity">
         </activity>
+        <activity android:name=".qrcode.QRCodeWriterActivity">
+        </activity>
 
         <activity android:name=".connection.ConnectionActivity">
         </activity>

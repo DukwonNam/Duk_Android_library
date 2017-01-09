@@ -48,6 +48,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
                 jumpToQRCodeScanner();
                 break;
             case R.id.qrcodeWriter:
+                jumpToQRCodeWriter();
                 break;
         }
     }
@@ -55,6 +56,17 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private void jumpToQRCodeScanner() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), QRCodeScannerActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            // Do nothing
+        }
+    }
+
+    private void jumpToQRCodeWriter() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), QRCodeWriterActivity.class);
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
