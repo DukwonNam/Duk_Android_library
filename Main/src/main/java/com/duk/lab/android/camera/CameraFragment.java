@@ -51,7 +51,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             R.id.singleShot,
             R.id.singleShotSaving,
             R.id.viewThroughCamera,
-            R.id.viewThroughCamera2
+            R.id.viewThroughCamera2,
+            R.id.faceDetection
     };
 
     private String mCurrentPhotoPath;
@@ -103,6 +104,12 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
             case R.id.viewThroughCamera2: {
                 Context context = getActivity();
                 Intent intent = new Intent(context, CameraView2Activity.class);
+                context.startActivity(intent);
+                break;
+            }
+            case R.id.faceDetection: {
+                Context context = getActivity();
+                Intent intent = new Intent(context, CameraFaceDetectionActivity.class);
                 context.startActivity(intent);
                 break;
             }
