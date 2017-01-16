@@ -30,6 +30,11 @@
             android:text="View through Camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/viewThroughCamera2"
+            android:text="View through Camera2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

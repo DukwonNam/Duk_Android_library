@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.duk.lab.android.R;
@@ -49,7 +50,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
             R.id.singleShot,
             R.id.singleShotSaving,
-            R.id.viewThroughCamera
+            R.id.viewThroughCamera,
+            R.id.viewThroughCamera2
     };
 
     private String mCurrentPhotoPath;
@@ -58,6 +60,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         final View view = inflater.inflate(R.layout.camera_main, container, false);
         initViews(view);
 
@@ -91,11 +94,18 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
                     singleShotSaving();
                 }
                 break;
-            case R.id.viewThroughCamera:
+            case R.id.viewThroughCamera: {
                 Context context = getActivity();
                 Intent intent = new Intent(context, CameraViewActivity.class);
                 context.startActivity(intent);
                 break;
+            }
+            case R.id.viewThroughCamera2: {
+                Context context = getActivity();
+                Intent intent = new Intent(context, CameraView2Activity.class);
+                context.startActivity(intent);
+                break;
+            }
         }
     }
 

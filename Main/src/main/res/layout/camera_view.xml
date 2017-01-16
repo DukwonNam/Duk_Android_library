@@ -4,16 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/cameraViewLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        >
 
-        <FrameLayout
-            android:id="@+id/cameraViewLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            />
-    </RelativeLayout>
+    </FrameLayout>
 
 </LinearLayout>
