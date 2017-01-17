@@ -192,7 +192,13 @@ public class CameraFaceDetectionFragment extends Fragment implements SurfaceHold
     private void prepareFaceDetectionRects() {
         mCamera.setFaceDetectionListener(this);
         final int maxNumDetectedFaces = mCamera.getParameters().getMaxNumDetectedFaces();
+        final int poolCount = mDetectedViewPool.size();
+
         for (int i = 0; i < maxNumDetectedFaces; i++) {
+            if (i < poolCount) {
+                continue;
+            }
+
             final View view = new View(getActivity());
             view.setVisibility(View.GONE);
             view.setBackgroundResource(R.drawable.rectangle_bg);
@@ -205,17 +211,21 @@ public class CameraFaceDetectionFragment extends Fragment implements SurfaceHold
     public void onFaceDetection(Camera.Face[] faces, Camera camera) {
         Log.i("test_duk", "onFaceDetection faces=" + faces + ", camera=" + camera);
         final int faceCount = faces.length;
+        final int screenWidth = mRootView.getWidth();
+        final int screenHeight = mRootView.getHeight();
+        Log.i("test_duk", "onFaceDetection screenWidth=" + screenWidth + ", screenHeight=" + screenHeight);
+
         for (int i = 0; i < mDetectedViewPool.size(); i++) {
             if (i < faceCount) {
                 final View view = mDetectedViewPool.get(i);
                 final Rect faceRect = faces[i].rect;
                 Log.i("test_duk", "onFaceDetection faceRect.centerX()=" + faceRect.centerX() + ", faceRect.centerY()=" + faceRect.centerY());
-                view.setLeft(faceRect.centerX());
-                view.setTop(faceRect.centerY());
-                view.setRight(faceRect.centerX() + faceRect.width());
-                view.setBottom(faceRect.centerY() + faceRect.height());
+                view.setLeft(faceRect.centerY() + 1000);
+                view.setTop(faceRect.centerX() + 1000);
+                view.setRight(faceRect.centerY() + 1000 + faceRect.width());
+                view.setBottom(faceRect.centerX() + 1000 + faceRect.height());
                 view.setVisibility(View.VISIBLE);
-                view.invalidate();
+//                view.invalidate();
             } else {
                 mDetectedViewPool.get(i).setVisibility(View.GONE);
             }
