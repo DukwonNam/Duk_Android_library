@@ -220,15 +220,24 @@ public class CameraFaceDetectionFragment extends Fragment implements SurfaceHold
                 final View view = mDetectedViewPool.get(i);
                 final Rect faceRect = faces[i].rect;
                 Log.i("test_duk", "onFaceDetection faceRect.centerX()=" + faceRect.centerX() + ", faceRect.centerY()=" + faceRect.centerY());
-                view.setLeft(faceRect.centerY() + 1000);
-                view.setTop(faceRect.centerX() + 1000);
-                view.setRight(faceRect.centerY() + 1000 + faceRect.width());
-                view.setBottom(faceRect.centerX() + 1000 + faceRect.height());
+                Log.i("test_duk", "onFaceDetection faceRect.width()=" + faceRect.width() + ", faceRect.height()=" + faceRect.height());
+                Log.i("test_duk", "onFaceDetection faceRect.left=" + faceRect.left + ", faceRect.top=" + faceRect.top  + ", faceRect.right=" + faceRect.right  + ", faceRect.bottom=" + faceRect.bottom);
+
+                // only Portrait
+                view.setLeft((1000 - faceRect.bottom) * screenWidth / 2000);
+                view.setTop((faceRect.left + 1000) * screenHeight / 2000);
+                view.setRight(view.getLeft() + faceRect.width());
+                view.setBottom(view.getTop() + faceRect.height());
                 view.setVisibility(View.VISIBLE);
-//                view.invalidate();
             } else {
                 mDetectedViewPool.get(i).setVisibility(View.GONE);
             }
         }
     }
+    /*
+    view.setLeft(faceRect.left + 1000);
+                view.setTop(faceRect.top + 1000);
+                view.setRight(faceRect.right + 1000);
+                view.setBottom(faceRect.bottom + 1000);
+     */
 }
