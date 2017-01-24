@@ -1,4 +1,6 @@
-package com.duk.lab.android.notification;
+package com.duk.lab.android.animation;
+
+import com.duk.lab.android.R;
 
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
@@ -8,24 +10,24 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.duk.lab.android.R;
+import android.widget.TextView;
 
 /**
  * Created by dukwonnam on 2017. 1. 24..
  */
 
-public class NotificationMainFragment extends Fragment implements View.OnClickListener {
+public class AnimationMainFragment extends Fragment implements View.OnClickListener {
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
-            R.id.notification_basic,
-            R.id.notification_custom
+            R.id.toggleAnimation
     };
+
+    private boolean mIsStarted;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        final View view = inflater.inflate(R.layout.notification_main, container, false);
+        final View view = inflater.inflate(R.layout.animation_main, container, false);
         for (int resId : ON_CLICK_LISTENER_ID_ARRAY) {
             view.findViewById(resId).setOnClickListener(this);
         }
@@ -40,12 +42,24 @@ public class NotificationMainFragment extends Fragment implements View.OnClickLi
         }
 
         switch (v.getId()) {
-            case R.id.notification_basic:
-                jumpToActivity(NotificationBasicActivity.class);
-                break;
-            case R.id.notification_custom:
+            case R.id.toggleAnimation:
+                if (mIsStarted) {
+                    stopAnimation();
+                } else {
+                    startAnimation();
+                }
                 break;
         }
+    }
+
+    private void startAnimation() {
+        final TextView tv = (TextView) getView().findViewById(R.id.marqueeText);
+        tv.animate().rotation(100).setDuration(500);
+    }
+
+    private void stopAnimation() {
+        final TextView tv = (TextView) getView().findViewById(R.id.marqueeText);
+        tv.animate().rotation(0).setDuration(500);
     }
 
     private void jumpToActivity(Class<?> cls) {

@@ -9,23 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/notification_basic"
-            android:text="Noti Basic"
+            android:id="@+id/toggleAnimation"
+            android:text="start/stop animation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/notification_custom"
-            android:src="@android:drawable/star_big_on"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/marqueeText"
+            android:text="Marquee Text"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
 
 </LinearLayout>

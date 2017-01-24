@@ -21,5 +21,9 @@
             android:id="@+id/menu_notification"
             android:title="Notification"
             android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_animation"
+            android:title="Animation"
+            android:icon="@mipmap/ic_launcher"/>
     </group>
 </menu>

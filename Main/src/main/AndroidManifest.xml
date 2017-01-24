@@ -55,6 +55,11 @@
 
         <activity android:name=".notification.NotificationMainActivity">
         </activity>
+        <activity android:name=".notification.NotificationBasicActivity">
+        </activity>
+
+        <activity android:name=".animation.AnimationMainActivity">
+        </activity>
 
         <activity android:name=".weather.WeatherMainActivity">
         </activity>
