@@ -4,67 +4,69 @@ import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
+import com.duk.lab.android.notification.NotificationMainActivity;
 import com.duk.lab.android.qrcode.QRCodeActivity;
 
 /**
  * Created by Duk on 2016-12-13.
  */
 
-public class MainFragment extends Fragment implements View.OnClickListener {
-    private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
-            R.id.calendarButton,
-            R.id.cameraButton,
-            R.id.qrcodeButton,
-            R.id.connectionButton
-    };
+public class MainFragment extends Fragment {
+    private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        final View view = inflater.inflate(R.layout.main, container, false);
-        for (int resId : CLICK_EVENT_ID_ARRAY) {
-            view.findViewById(resId).setOnClickListener(this);
-        }
+        final View view = inflater.inflate(R.layout.navigation_frame_main, container, false);
 
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mToolbar);
+        initNavigationDrawer(view);
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == null) {
-            return;
-        }
+    private void initNavigationDrawer(View view) {
+        final NavigationView navigationView = (NavigationView)view.findViewById(R.id.navigation_view);
+        mDrawerLayout = (DrawerLayout)view.findViewById(R.id.drawer);
+        navigationView.setNavigationItemSelectedListener(mNavigationItemSelectedListener);
 
-        switch (v.getId()) {
-            case R.id.calendarButton:
-                jumpToCalendar();
-                break;
-            case R.id.cameraButton:
-                jumpToCamera();
-                break;
-            case R.id.qrcodeButton:
-                jumpToQRCode();
-                break;
-            case R.id.connectionButton:
-                jumpToConnection();
-                break;
-        }
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close) {
+
+            @Override
+            public void onDrawerClosed(View v){
+                super.onDrawerClosed(v);
+            }
+
+            @Override
+            public void onDrawerOpened(View v) {
+                super.onDrawerOpened(v);
+            }
+        };
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
-    private void jumpToCalendar() {
+    private void jumpToActivity(Class<?> cls) {
         Intent intent = new Intent();
-        intent.setClass(getActivity(), CalendarActivity.class);
+        intent.setClass(getActivity(), cls);
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
@@ -72,33 +74,31 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void jumpToCamera() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), CameraActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
-        }
-    }
+    private NavigationView.OnNavigationItemSelectedListener mNavigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
 
-    private void jumpToQRCode() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), QRCodeActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
-        }
-    }
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int id = item.getItemId();
 
-    private void jumpToConnection() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), ConnectionActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
+            switch (id){
+                case R.id.menu_calendar:
+                    jumpToActivity(CalendarActivity.class);
+                    break;
+                case R.id.menu_camera:
+                    jumpToActivity(CameraActivity.class);
+                    break;
+                case R.id.menu_qrcode:
+                    jumpToActivity(QRCodeActivity.class);
+                    break;
+                case R.id.menu_connection:
+                    jumpToActivity(ConnectionActivity.class);
+                    break;
+                case R.id.menu_notification:
+                    jumpToActivity(NotificationMainActivity.class);
+                    break;
+            }
+            mDrawerLayout.closeDrawers();
+            return true;
         }
-    }
+    };
 }

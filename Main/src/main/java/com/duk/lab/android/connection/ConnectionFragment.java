@@ -3,6 +3,7 @@ package com.duk.lab.android.connection;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ import com.duk.lab.android.R;
  */
 
 public class ConnectionFragment extends Fragment implements View.OnClickListener {
+    private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
+            R.id.url1,
+            R.id.url2
+    };
 
     private HttpConnectionHelper mHttpConnectionHelper;
     private TextView mResultView;
@@ -27,7 +32,9 @@ public class ConnectionFragment extends Fragment implements View.OnClickListener
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.connection_main, container, false);
-        view.findViewById(R.id.url1).setOnClickListener(this);
+        for (int resId : CLICK_EVENT_ID_ARRAY) {
+            view.findViewById(resId).setOnClickListener(this);
+        }
 
         mResultView = (TextView) view.findViewById(R.id.resultText);
         mHttpConnectionHelper = new HttpConnectionHelper(mHttpConnectionListener);
@@ -41,9 +48,16 @@ public class ConnectionFragment extends Fragment implements View.OnClickListener
             return;
         }
 
+        final CharSequence urlStr = ((TextView)v).getText();
+        if (TextUtils.isEmpty(urlStr)) {
+            return;
+        }
+
         switch (v.getId()) {
             case R.id.url1:
                 mHttpConnectionHelper.requestUrl("https://api.github.com");
+            case R.id.url2:
+                mHttpConnectionHelper.requestUrl("http://www.kma.go.kr/wid/queryDFS.jsp?gridx=59\\&gridy=127");
                 break;
         }
     }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_calendar"
+            android:title="Calendar"
+            android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_camera"
+            android:title="Settings"
+            android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_qrcode"
+            android:title="QRCode"
+            android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_connection"
+            android:title="Connection"
+            android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_notification"
+            android:title="Notification"
+            android:icon="@mipmap/ic_launcher"/>
+    </group>
+</menu>

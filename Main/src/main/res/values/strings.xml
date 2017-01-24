@@ -9,4 +9,7 @@
     <string name="calendar_day_title_thursday">Thu</string>
     <string name="calendar_day_title_friday">Fri</string>
     <string name="calendar_day_title_saturday">Sat</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>
