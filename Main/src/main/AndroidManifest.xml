@@ -57,6 +57,8 @@
         </activity>
         <activity android:name=".notification.NotificationBasicActivity">
         </activity>
+        <activity android:name=".notification.NotificationCustomActivity">
+        </activity>
 
         <activity android:name=".animation.AnimationMainActivity">
         </activity>
