@@ -52,6 +52,8 @@
 
         <activity android:name=".connection.ConnectionActivity">
         </activity>
+        <activity android:name=".connection.retrofit.RetrofitActivity">
+        </activity>
 
         <activity android:name=".notification.NotificationMainActivity">
         </activity>

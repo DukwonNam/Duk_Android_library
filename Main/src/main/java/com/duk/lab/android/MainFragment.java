@@ -22,6 +22,7 @@ import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
 import com.duk.lab.android.notification.NotificationMainActivity;
 import com.duk.lab.android.qrcode.QRCodeActivity;
+import com.duk.lab.android.util.CommonUtil;
 
 /**
  * Created by Duk on 2016-12-13.
@@ -65,16 +66,6 @@ public class MainFragment extends Fragment {
         actionBarDrawerToggle.syncState();
     }
 
-    private void jumpToActivity(Class<?> cls) {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
-        }
-    }
-
     private NavigationView.OnNavigationItemSelectedListener mNavigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -83,22 +74,22 @@ public class MainFragment extends Fragment {
 
             switch (id){
                 case R.id.menu_calendar:
-                    jumpToActivity(CalendarActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), CalendarActivity.class);
                     break;
                 case R.id.menu_camera:
-                    jumpToActivity(CameraActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), CameraActivity.class);
                     break;
                 case R.id.menu_qrcode:
-                    jumpToActivity(QRCodeActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), QRCodeActivity.class);
                     break;
                 case R.id.menu_connection:
-                    jumpToActivity(ConnectionActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), ConnectionActivity.class);
                     break;
                 case R.id.menu_notification:
-                    jumpToActivity(NotificationMainActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), NotificationMainActivity.class);
                     break;
                 case R.id.menu_animation:
-                    jumpToActivity(AnimationMainActivity.class);
+                    CommonUtil.jumpToActivity(getActivity(), AnimationMainActivity.class);
                     break;
             }
             mDrawerLayout.closeDrawers();

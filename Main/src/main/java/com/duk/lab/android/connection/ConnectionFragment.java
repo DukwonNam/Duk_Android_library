@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.duk.lab.android.R;
+import com.duk.lab.android.connection.retrofit.RetrofitActivity;
+import com.duk.lab.android.util.CommonUtil;
 
 /**
  * Created by Duk on 2016-12-19.
@@ -20,7 +23,8 @@ import com.duk.lab.android.R;
 public class ConnectionFragment extends Fragment implements View.OnClickListener {
     private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
             R.id.url1,
-            R.id.url2
+            R.id.url2,
+            R.id.retrofit
     };
 
     private HttpConnectionHelper mHttpConnectionHelper;
@@ -56,8 +60,12 @@ public class ConnectionFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.url1:
                 mHttpConnectionHelper.requestUrl("https://api.github.com");
+                break;
             case R.id.url2:
                 mHttpConnectionHelper.requestUrl("http://www.kma.go.kr/wid/queryDFS.jsp?gridx=59\\&gridy=127");
+                break;
+            case R.id.retrofit:
+                CommonUtil.jumpToActivity(getActivity(), RetrofitActivity.class);
                 break;
         }
     }

@@ -61,14 +61,4 @@ public class AnimationMainFragment extends Fragment implements View.OnClickListe
         final TextView tv = (TextView) getView().findViewById(R.id.marqueeText);
         tv.animate().rotation(0).setDuration(500);
     }
-
-    private void jumpToActivity(Class<?> cls) {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
-        }
-    }
 }

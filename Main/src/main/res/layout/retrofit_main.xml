@@ -14,22 +14,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="https://api.github.com"/>
-        <Button
-            android:id="@+id/retrofit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="retrofit"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/url2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weather"/>
 
     </LinearLayout>
     <ScrollView

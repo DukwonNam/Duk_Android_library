@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duk.lab.android.R;
+import com.duk.lab.android.util.CommonUtil;
 
 /**
  * Created by dukwonnam on 2017. 1. 24..
@@ -41,21 +42,11 @@ public class NotificationMainFragment extends Fragment implements View.OnClickLi
 
         switch (v.getId()) {
             case R.id.notificationBasic:
-                jumpToActivity(NotificationBasicActivity.class);
+                CommonUtil.jumpToActivity(getActivity(), NotificationBasicActivity.class);
                 break;
             case R.id.notificationCustom:
-                jumpToActivity(NotificationCustomActivity.class);
+                CommonUtil.jumpToActivity(getActivity(), NotificationCustomActivity.class);
                 break;
-        }
-    }
-
-    private void jumpToActivity(Class<?> cls) {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), cls);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            // Do nothing
         }
     }
 }
