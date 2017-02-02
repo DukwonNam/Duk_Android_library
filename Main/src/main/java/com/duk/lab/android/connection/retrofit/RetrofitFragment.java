@@ -22,6 +22,7 @@ public class RetrofitFragment extends Fragment implements View.OnClickListener {
     };
 
     private TextView mResultView;
+    private RetrofitConnectionHelper mRetrofitConnectionHelper;
 
     @Nullable
     @Override
@@ -34,6 +35,7 @@ public class RetrofitFragment extends Fragment implements View.OnClickListener {
         }
 
         mResultView = (TextView) view.findViewById(R.id.resultText);
+        mRetrofitConnectionHelper = new RetrofitConnectionHelper(mRetrofitConnectionListener);
 
         return view;
     }
@@ -51,7 +53,16 @@ public class RetrofitFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.url1:
+                mRetrofitConnectionHelper.requestService();
                 break;
         }
     }
+
+    private RetrofitConnectionHelper.RetrofitConnectionListener mRetrofitConnectionListener = new RetrofitConnectionHelper.RetrofitConnectionListener() {
+
+        @Override
+        public void onReceiveData(Object obj) {
+            mResultView.setText(obj.toString());
+        }
+    };
 }

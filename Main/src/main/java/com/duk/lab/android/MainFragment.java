@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.duk.lab.android.alarm.AlarmMainActivity;
 import com.duk.lab.android.animation.AnimationMainActivity;
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
@@ -90,6 +91,9 @@ public class MainFragment extends Fragment {
                     break;
                 case R.id.menu_animation:
                     CommonUtil.jumpToActivity(getActivity(), AnimationMainActivity.class);
+                    break;
+                case R.id.menu_alarm:
+                    CommonUtil.jumpToActivity(getActivity(), AlarmMainActivity.class);
                     break;
             }
             mDrawerLayout.closeDrawers();

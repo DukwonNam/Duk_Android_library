@@ -65,6 +65,9 @@
         <activity android:name=".animation.AnimationMainActivity">
         </activity>
 
+        <activity android:name=".alarm.AlarmMainActivity">
+        </activity>
+
         <activity android:name=".weather.WeatherMainActivity">
         </activity>
 
