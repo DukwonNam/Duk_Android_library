@@ -7,7 +7,7 @@
             android:icon="@mipmap/ic_launcher"/>
         <item
             android:id="@+id/menu_camera"
-            android:title="Settings"
+            android:title="Camera"
             android:icon="@mipmap/ic_launcher"/>
         <item
             android:id="@+id/menu_qrcode"
