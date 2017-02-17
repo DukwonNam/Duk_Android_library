@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+                >
+    <!-- if you want play these just once
+        android:oneshot="true">
+    -->
+    <item android:drawable="@drawable/cat_0" android:duration="50" />
+    <item android:drawable="@drawable/cat_1" android:duration="50" />
+    <item android:drawable="@drawable/cat_2" android:duration="50" />
+    <item android:drawable="@drawable/cat_3" android:duration="50" />
+    <item android:drawable="@drawable/cat_4" android:duration="50" />
+    <item android:drawable="@drawable/cat_5" android:duration="50" />
+    <item android:drawable="@drawable/cat_6" android:duration="50" />
+    <item android:drawable="@drawable/cat_7" android:duration="50" />
+    <item android:drawable="@drawable/cat_8" android:duration="50" />
+    <item android:drawable="@drawable/cat_9" android:duration="50" />
+    <item android:drawable="@drawable/cat_10" android:duration="50" />
+    <item android:drawable="@drawable/cat_11" android:duration="50" />
+    <item android:drawable="@drawable/cat_12" android:duration="50" />
+    <item android:drawable="@drawable/cat_13" android:duration="50" />
+    <item android:drawable="@drawable/cat_14" android:duration="50" />
+    <item android:drawable="@drawable/cat_15" android:duration="50" />
+    <item android:drawable="@drawable/cat_16" android:duration="50" />
+    <item android:drawable="@drawable/cat_17" android:duration="50" />
+    <item android:drawable="@drawable/cat_18" android:duration="50" />
+    <item android:drawable="@drawable/cat_19" android:duration="50" />
+    <item android:drawable="@drawable/cat_20" android:duration="50" />
+    <item android:drawable="@drawable/cat_21" android:duration="50" />
+    <item android:drawable="@drawable/cat_22" android:duration="50" />
+    <item android:drawable="@drawable/cat_23" android:duration="50" />
+    <item android:drawable="@drawable/cat_24" android:duration="50" />
+    <item android:drawable="@drawable/cat_25" android:duration="50" />
+    <item android:drawable="@drawable/cat_26" android:duration="50" />
+    <item android:drawable="@drawable/cat_27" android:duration="50" />
+    <item android:drawable="@drawable/cat_28" android:duration="50" />
+    <item android:drawable="@drawable/cat_29" android:duration="50" />
+    <item android:drawable="@drawable/cat_30" android:duration="50" />
+    <item android:drawable="@drawable/cat_31" android:duration="50" />
+    <item android:drawable="@drawable/cat_32" android:duration="50" />
+    <item android:drawable="@drawable/cat_33" android:duration="50" />
+    <item android:drawable="@drawable/cat_34" android:duration="50" />
+</animation-list>

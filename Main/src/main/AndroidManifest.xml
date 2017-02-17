@@ -64,6 +64,8 @@
 
         <activity android:name=".animation.AnimationMainActivity">
         </activity>
+        <activity android:name=".animation.AnimationGifActivity">
+        </activity>
 
         <activity android:name=".alarm.AlarmMainActivity">
         </activity>
