@@ -8,9 +8,9 @@ import android.app.Fragment;
  * Created by dukwonnam on 2017. 1. 19..
  */
 
-public class AnimationGifActivity extends CommonFragmentActivity {
+public class AnimationByJpgActivity extends CommonFragmentActivity {
     @Override
     protected Fragment createFragment() {
-        return new AnimationGifFragment();
+        return new AnimationByJpgFragment();
     }
 }

@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/jumpToGifPlay"
-            android:text="Jump to GIF play"
+            android:id="@+id/jumpToJpgPlay"
+            android:text="Jump to JPG play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/jumpToSwfPlay"
-            android:text="Jump to SWF play"
+            android:id="@+id/jumpToGifPlay"
+            android:text="Jump to GIF play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

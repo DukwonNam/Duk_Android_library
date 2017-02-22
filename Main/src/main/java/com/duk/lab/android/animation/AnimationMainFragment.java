@@ -4,8 +4,6 @@ import com.duk.lab.android.R;
 import com.duk.lab.android.util.CommonUtil;
 
 import android.app.Fragment;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -20,6 +18,7 @@ import android.widget.TextView;
 public class AnimationMainFragment extends Fragment implements View.OnClickListener {
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
             R.id.toggleAnimation,
+            R.id.jumpToJpgPlay,
             R.id.jumpToGifPlay
     };
 
@@ -53,8 +52,11 @@ public class AnimationMainFragment extends Fragment implements View.OnClickListe
                     mIsStarted = true;
                 }
                 break;
+            case R.id.jumpToJpgPlay:
+                CommonUtil.jumpToActivity(getActivity(), AnimationByJpgActivity.class);
+                break;
             case R.id.jumpToGifPlay:
-                CommonUtil.jumpToActivity(getActivity(), AnimationGifActivity.class);
+                CommonUtil.jumpToActivity(getActivity(), AnimationByGifActivity.class);
                 break;
         }
     }

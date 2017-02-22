@@ -10,35 +10,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * Created by dukwonnam on 2017. 1. 24..
  */
 
-public class AnimationGifFragment extends Fragment implements View.OnClickListener {
+public class AnimationByJpgFragment extends Fragment implements View.OnClickListener {
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
-            R.id.gifImageView
+            R.id.imageView
     };
 
-    private AnimationDrawable mGifBackground;
-    private ImageView mGifImageView;
+    private AnimationDrawable mAnimationBackground;
+    private ImageView mImageView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        final View view = inflater.inflate(R.layout.animation_gif, container, false);
+        final View view = inflater.inflate(R.layout.animation_image, container, false);
         for (int resId : ON_CLICK_LISTENER_ID_ARRAY) {
             view.findViewById(resId).setOnClickListener(this);
         }
 
-        mGifImageView = (ImageView) view.findViewById(R.id.gifImageView);
+        mImageView = (ImageView) view.findViewById(R.id.imageView);
 
         /*
          * Please set single Images first for java.lang.OutOfMemoryError
          */
-        mGifImageView.setBackgroundResource(R.drawable.cat_0);
+        mImageView.setBackgroundResource(R.drawable.cat_0);
 
         return view;
     }
@@ -50,14 +49,14 @@ public class AnimationGifFragment extends Fragment implements View.OnClickListen
         }
 
         switch (v.getId()) {
-            case R.id.gifImageView:
-                if (mGifBackground == null) {
-                    mGifImageView.setBackgroundResource(R.drawable.cat_ani);
-                    mGifBackground = (AnimationDrawable) mGifImageView.getBackground();
-                    mGifBackground.start();
+            case R.id.imageView:
+                if (mAnimationBackground == null) {
+                    mImageView.setBackgroundResource(R.drawable.cat_ani);
+                    mAnimationBackground = (AnimationDrawable) mImageView.getBackground();
+                    mAnimationBackground.start();
                 } else {
-                    mGifBackground.stop();
-                    mGifBackground = null;
+                    mAnimationBackground.stop();
+                    mAnimationBackground = null;
                 }
                 break;
         }
