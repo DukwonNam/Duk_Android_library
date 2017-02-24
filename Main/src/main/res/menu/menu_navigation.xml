@@ -29,5 +29,13 @@
             android:id="@+id/menu_alarm"
             android:title="Alarm"
             android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_weather"
+            android:title="weather"
+            android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_touch"
+            android:title="touch"
+            android:icon="@mipmap/ic_launcher"/>
     </group>
 </menu>

@@ -23,7 +23,9 @@ import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
 import com.duk.lab.android.notification.NotificationMainActivity;
 import com.duk.lab.android.qrcode.QRCodeActivity;
+import com.duk.lab.android.touch.TouchMainActivity;
 import com.duk.lab.android.util.CommonUtil;
+import com.duk.lab.android.weather.WeatherMainActivity;
 
 /**
  * Created by Duk on 2016-12-13.
@@ -94,6 +96,12 @@ public class MainFragment extends Fragment {
                     break;
                 case R.id.menu_alarm:
                     CommonUtil.jumpToActivity(getActivity(), AlarmMainActivity.class);
+                    break;
+                case R.id.menu_weather:
+                    CommonUtil.jumpToActivity(getActivity(), WeatherMainActivity.class);
+                    break;
+                case R.id.menu_touch:
+                    CommonUtil.jumpToActivity(getActivity(), TouchMainActivity.class);
                     break;
             }
             mDrawerLayout.closeDrawers();

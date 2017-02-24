@@ -11,9 +11,10 @@ import android.content.Intent;
 public class CommonUtil {
 
     /**
+     * This is to launch the Activity.
      *
-     * @param context
-     * @param cls
+     * @param context this application context
+     * @param cls the activity
      */
     public static void jumpToActivity(Context context, Class<?> cls) {
         Intent intent = new Intent();
