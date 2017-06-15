@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.duk.lab.android.alarm.AlarmMainActivity;
 import com.duk.lab.android.animation.AnimationMainActivity;
+import com.duk.lab.android.bluetooth.BluetoothMainActivity;
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
@@ -102,6 +103,9 @@ public class MainFragment extends Fragment {
                     break;
                 case R.id.menu_touch:
                     CommonUtil.jumpToActivity(getActivity(), TouchMainActivity.class);
+                    break;
+                case R.id.menu_bluetooth:
+                    CommonUtil.jumpToActivity(getActivity(), BluetoothMainActivity.class);
                     break;
             }
             mDrawerLayout.closeDrawers();

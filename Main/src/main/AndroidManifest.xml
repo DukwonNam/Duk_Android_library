@@ -79,6 +79,9 @@
         <activity android:name=".touch.TouchMainActivity">
         </activity>
 
+        <activity android:name=".bluetooth.BluetoothMainActivity">
+        </activity>
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
