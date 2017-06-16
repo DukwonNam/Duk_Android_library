@@ -10,10 +10,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/scanBt"
+            android:id="@+id/toggleScanBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scan Bluetooth"/>
+            android:text="Scan BT"/>
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/btFoundList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </LinearLayout>
