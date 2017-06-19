@@ -74,27 +74,36 @@ public class BTDeviceListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final BluetoothDevice device;
-        if (mNewDeviceList.size() < position) {
+        if (mNewDeviceList.size() > position) {
             device = mNewDeviceList.get(position).device;
         } else {
             device = mBondedDeviceList.get(position - mNewDeviceList.size()).device;
         }
 
-        BTDeviceItemHolder btDeviceItemHolder = (BTDeviceItemHolder)holder;
-        switch (device.getBondState()) {
-            case BluetoothDevice.BOND_BONDED:
-                btDeviceItemHolder.bondState.setText("BONDED");
-                break;
-            case BluetoothDevice.BOND_BONDING:
-                btDeviceItemHolder.bondState.setText("BONDING");
-                break;
-            case BluetoothDevice.BOND_NONE:
-            default:
-                btDeviceItemHolder.bondState.setText("BONDING");
-                break;
+        BTDeviceItemHolder btDeviceItemHolder = (BTDeviceItemHolder) holder;
+        if (device == null) {
+            btDeviceItemHolder.bondState.setVisibility(View.GONE);
+            btDeviceItemHolder.deviceName.setVisibility(View.GONE);
+            btDeviceItemHolder.deviceAddress.setText("=========================================================================");
+        } else {
+            btDeviceItemHolder.bondState.setVisibility(View.VISIBLE);
+            btDeviceItemHolder.deviceName.setVisibility(View.VISIBLE);
+            switch (device.getBondState()) {
+                case BluetoothDevice.BOND_BONDED:
+                    btDeviceItemHolder.bondState.setText("BONDED");
+                    break;
+                case BluetoothDevice.BOND_BONDING:
+                    btDeviceItemHolder.bondState.setText("BONDING");
+                    break;
+                case BluetoothDevice.BOND_NONE:
+                default:
+                    btDeviceItemHolder.bondState.setText("NONE");
+                    break;
+            }
+            btDeviceItemHolder.deviceName.setText(device.getName());
+            btDeviceItemHolder.deviceAddress.setText(device.getAddress());
         }
-        btDeviceItemHolder.deviceName.setText(device.getName());
-        btDeviceItemHolder.deviceAddress.setText(device.getAddress());
+
     }
 
     @Override
@@ -121,7 +130,7 @@ public class BTDeviceListAdapter extends RecyclerView.Adapter {
         public void onClick(View v) {
             int position = getAdapterPosition();
             final BluetoothDevice device;
-            if (mNewDeviceList.size() < position) {
+            if (mNewDeviceList.size() > position) {
                 device = mNewDeviceList.get(position).device;
             } else {
                 device = mBondedDeviceList.get(position - mNewDeviceList.size()).device;
