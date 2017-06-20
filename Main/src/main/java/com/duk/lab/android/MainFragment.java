@@ -22,6 +22,7 @@ import com.duk.lab.android.bluetooth.BluetoothMainActivity;
 import com.duk.lab.android.calendar.CalendarActivity;
 import com.duk.lab.android.camera.CameraActivity;
 import com.duk.lab.android.connection.ConnectionActivity;
+import com.duk.lab.android.dialog.DialogMainActivity;
 import com.duk.lab.android.notification.NotificationMainActivity;
 import com.duk.lab.android.qrcode.QRCodeActivity;
 import com.duk.lab.android.touch.TouchMainActivity;
@@ -106,6 +107,9 @@ public class MainFragment extends Fragment {
                     break;
                 case R.id.menu_bluetooth:
                     CommonUtil.jumpToActivity(getActivity(), BluetoothMainActivity.class);
+                    break;
+                case R.id.menu_dialog:
+                    CommonUtil.jumpToActivity(getActivity(), DialogMainActivity.class);
                     break;
             }
             mDrawerLayout.closeDrawers();

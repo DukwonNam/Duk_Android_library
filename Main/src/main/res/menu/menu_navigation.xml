@@ -41,5 +41,9 @@
             android:id="@+id/menu_bluetooth"
             android:title="bluetooth"
             android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_dialog"
+            android:title="dialog"
+            android:icon="@mipmap/ic_launcher"/>
     </group>
 </menu>

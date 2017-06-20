@@ -64,6 +64,8 @@
 
         <activity android:name=".bluetooth.BluetoothMainActivity"/>
 
+        <activity android:name=".dialog.DialogMainActivity"/>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.duk.lab.android.fileprovider"
