@@ -42,7 +42,9 @@
         </activity>
 
         <activity android:name=".qrcode.QRCodeActivity"/>
+        <activity android:name=".qrcode.QRCodeScannerFullscreenActivity"/>
         <activity android:name=".qrcode.QRCodeScannerActivity"/>
+        <activity android:name=".qrcode.QRCodeScannerCustomActivity"/>
         <activity android:name=".qrcode.QRCodeWriterActivity"/>
 
         <activity android:name=".connection.ConnectionActivity"/>

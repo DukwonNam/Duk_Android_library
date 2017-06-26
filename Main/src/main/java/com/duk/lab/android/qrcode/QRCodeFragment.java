@@ -24,7 +24,9 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
             R.id.qrcodeScannerZxing,
+            R.id.qrcodeScannerFullscreen,
             R.id.qrcodeScanner,
+            R.id.qrcodeScannerCustom,
             R.id.qrcodeWriter
     };
 
@@ -53,8 +55,14 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
             case R.id.qrcodeScannerZxing:
                 jumpToQRCodeScannerZxing();
                 break;
+            case R.id.qrcodeScannerFullscreen:
+                jumpToQRCodeScannerFullscreen();
+                break;
             case R.id.qrcodeScanner:
                 jumpToQRCodeScanner();
+                break;
+            case R.id.qrcodeScannerCustom:
+                jumpToQRCodeScannerCustom();
                 break;
             case R.id.qrcodeWriter:
                 jumpToQRCodeWriter();
@@ -71,9 +79,31 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         startActivityForResult(intent, IntentIntegrator.REQUEST_CODE);
     }
 
+    private void jumpToQRCodeScannerFullscreen() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), QRCodeScannerFullscreenActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            // Do nothing
+        }
+    }
+
     private void jumpToQRCodeScanner() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), QRCodeScannerActivity.class);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            // Do nothing
+        }
+    }
+
+    private void jumpToQRCodeScannerCustom() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), QRCodeScannerCustomActivity.class);
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
