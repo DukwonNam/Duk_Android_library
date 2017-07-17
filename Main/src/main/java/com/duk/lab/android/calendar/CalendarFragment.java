@@ -25,7 +25,7 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        View view = inflater.inflate(R.layout.calendar_main, container, false);
+        View view = inflater.inflate(R.layout.calendar_month, container, false);
         mCalendarContainer = (FrameLayout)view.findViewById(R.id.calendarContainer);
         mCalendarContainer.removeAllViews();
         final CalendarView calendarView = new CalendarView(getActivity());

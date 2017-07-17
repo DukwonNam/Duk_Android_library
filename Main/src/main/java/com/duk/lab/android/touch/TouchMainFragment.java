@@ -1,6 +1,7 @@
 package com.duk.lab.android.touch;
 
 import com.duk.lab.android.R;
+import com.duk.lab.android.util.CommonUtil;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -18,10 +19,9 @@ import android.widget.ImageView;
 
 public class TouchMainFragment extends Fragment implements View.OnClickListener {
     private static final int[] CLICK_EVENT_ID_ARRAY = new int[] {
-            R.id.reset,
-            R.id.confirm,
+            R.id.touchTracking,
+            R.id.touchSelecting,
     };
-    private TouchTrackingDrawer mTouchTrackingDrawer;
 
     @Nullable
     @Override
@@ -33,8 +33,6 @@ public class TouchMainFragment extends Fragment implements View.OnClickListener 
             view.findViewById(resId).setOnClickListener(this);
         }
 
-        mTouchTrackingDrawer = (TouchTrackingDrawer)view.findViewById(R.id.touchTrackingDrawer);
-
         return view;
     }
 
@@ -45,22 +43,12 @@ public class TouchMainFragment extends Fragment implements View.OnClickListener 
         }
 
         switch (view.getId()) {
-            case R.id.reset:
-                if (mTouchTrackingDrawer != null) {
-                    mTouchTrackingDrawer.resetTracked();
-                }
+            case R.id.touchTracking:
+                CommonUtil.jumpToActivity(getActivity(), TouchTrackingActivity.class);
                 break;
 
-            case R.id.confirm:
-                if (mTouchTrackingDrawer != null) {
-                    final Bitmap bitmap = mTouchTrackingDrawer.getTrackedBitmap();
-                    final ImageView imageView = new ImageView(getActivity());
-                    imageView.setImageBitmap(bitmap);
-
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setView(imageView);
-                    builder.create().show();
-                }
+            case R.id.touchSelecting:
+                CommonUtil.jumpToActivity(getActivity(), TouchTrackingActivity.class);
                 break;
         }
     }
