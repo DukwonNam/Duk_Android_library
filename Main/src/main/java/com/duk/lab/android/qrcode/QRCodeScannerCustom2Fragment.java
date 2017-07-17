@@ -19,8 +19,8 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by dukwonnam on 2017. 1. 6..
  */
 
-public class QRCodeScannerFragment extends Fragment implements ZXingScannerView.ResultHandler {
-    private static String TAG = "QRCodeScannerFragment";
+public class QRCodeScannerCustom2Fragment extends Fragment implements ZXingScannerView.ResultHandler {
+    private static String TAG = "QRCodeScannerCustom2Fragment";
 
     private FrameLayout mQRcodeScannerLayout;
     private ZXingScannerView mScannerView;
@@ -29,7 +29,7 @@ public class QRCodeScannerFragment extends Fragment implements ZXingScannerView.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.qrcode_scanner, container, false);
+        View view = inflater.inflate(R.layout.qrcode_scanner_custom2, container, false);
 
         mQRcodeScannerLayout = (FrameLayout)view.findViewById(R.id.qrcodeScannerLayout);
         mScannerView = new ZXingScannerView(getActivity());   // Programmatically initialize the scanner view

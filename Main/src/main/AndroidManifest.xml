@@ -42,8 +42,7 @@
         </activity>
 
         <activity android:name=".qrcode.QRCodeActivity"/>
-        <activity android:name=".qrcode.QRCodeScannerFullscreenActivity"/>
-        <activity android:name=".qrcode.QRCodeScannerActivity"/>
+        <activity android:name=".qrcode.QRCodeScannerCustom2Activity"/>
         <activity android:name=".qrcode.QRCodeScannerCustomActivity"/>
         <activity android:name=".qrcode.QRCodeWriterActivity"/>
 
@@ -53,6 +52,9 @@
         <activity android:name=".notification.NotificationMainActivity"/>
         <activity android:name=".notification.NotificationBasicActivity"/>
         <activity android:name=".notification.NotificationCustomActivity"/>
+
+        <activity android:name=".media.MediaMainActivity"/>
+        <activity android:name=".media.VideoPlayerActivity"/>
 
         <activity android:name=".animation.AnimationMainActivity"/>
         <activity android:name=".animation.AnimationByJpgActivity"/>

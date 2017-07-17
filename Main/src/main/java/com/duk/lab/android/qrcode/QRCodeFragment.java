@@ -1,7 +1,6 @@
 package com.duk.lab.android.qrcode;
 
 import android.app.Fragment;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duk.lab.android.R;
+import com.duk.lab.android.util.CommonUtil;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -24,8 +24,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
     private static final int[] ON_CLICK_LISTENER_ID_ARRAY = new int[] {
             R.id.qrcodeScannerZxing,
-            R.id.qrcodeScannerFullscreen,
-            R.id.qrcodeScanner,
+            R.id.qrcodeScannerCustom2,
             R.id.qrcodeScannerCustom,
             R.id.qrcodeWriter
     };
@@ -55,17 +54,14 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
             case R.id.qrcodeScannerZxing:
                 jumpToQRCodeScannerZxing();
                 break;
-            case R.id.qrcodeScannerFullscreen:
-                jumpToQRCodeScannerFullscreen();
-                break;
-            case R.id.qrcodeScanner:
-                jumpToQRCodeScanner();
+            case R.id.qrcodeScannerCustom2:
+                CommonUtil.jumpToActivity(getActivity(), QRCodeScannerCustom2Activity.class);
                 break;
             case R.id.qrcodeScannerCustom:
-                jumpToQRCodeScannerCustom();
+                CommonUtil.jumpToActivity(getActivity(), QRCodeScannerCustomActivity.class);
                 break;
             case R.id.qrcodeWriter:
-                jumpToQRCodeWriter();
+                CommonUtil.jumpToActivity(getActivity(), QRCodeWriterActivity.class);
                 break;
         }
     }
@@ -77,50 +73,6 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         intent.putExtra(Intents.Scan.CAMERA_ID, 1); // Front camera
 
         startActivityForResult(intent, IntentIntegrator.REQUEST_CODE);
-    }
-
-    private void jumpToQRCodeScannerFullscreen() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), QRCodeScannerFullscreenActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            // Do nothing
-        }
-    }
-
-    private void jumpToQRCodeScanner() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), QRCodeScannerActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            // Do nothing
-        }
-    }
-
-    private void jumpToQRCodeScannerCustom() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), QRCodeScannerCustomActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            // Do nothing
-        }
-    }
-
-    private void jumpToQRCodeWriter() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), QRCodeWriterActivity.class);
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            // Do nothing
-        }
     }
 
     @Override

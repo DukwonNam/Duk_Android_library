@@ -45,5 +45,9 @@
             android:id="@+id/menu_dialog"
             android:title="dialog"
             android:icon="@mipmap/ic_launcher"/>
+        <item
+            android:id="@+id/menu_media"
+            android:title="media"
+            android:icon="@mipmap/ic_launcher"/>
     </group>
 </menu>
