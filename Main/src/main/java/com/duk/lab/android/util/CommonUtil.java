@@ -14,7 +14,7 @@ public class CommonUtil {
      * This is to launch the Activity.
      *
      * @param context this application context
-     * @param cls the activity
+     * @param cls the activity class
      */
     public static void jumpToActivity(Context context, Class<?> cls) {
         Intent intent = new Intent();
