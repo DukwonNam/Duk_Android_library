@@ -9,7 +9,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +56,7 @@ public class NotificationCustomFragment extends Fragment implements View.OnClick
     }
 
     private void startNotification() {
-        mNotificationBuilder = new NotificationCompat.Builder(getActivity());
+        mNotificationBuilder = new NotificationCompat.Builder(getActivity(), "");
 
         mNotificationBuilder.setContentTitle("Content Title")
                 .setContentText("Content Text")

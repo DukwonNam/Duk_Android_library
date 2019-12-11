@@ -1,18 +1,13 @@
 package com.duk.lab.android.connection.retrofit;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-
 import android.os.AsyncTask;
 
 import com.duk.lab.android.connection.retrofit.services.GithubMain;
-import com.google.gson.Gson;
 
-import retrofit.RestAdapter;
-import retrofit.client.Request;
-import retrofit.client.UrlConnectionClient;
-import retrofit.converter.GsonConverter;
-
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -38,19 +33,19 @@ public class RetrofitConnectionHelper {
 
         @Override
         protected Object doInBackground(Void... params) {
-            RestAdapter.Builder restAdapterBuilder = new RestAdapter.Builder();
-            restAdapterBuilder.setLogLevel(RestAdapter.LogLevel.FULL)
-                    .setEndpoint("https://api.github.com")
-                    .setConverter(new GsonConverter(new Gson()))
-                    .setClient(new UrlConnectionClient() {
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(interceptor);
+            builder.build();
 
-                        @Override
-                        protected HttpURLConnection openConnection(Request request) throws IOException {
-                            return super.openConnection(request);
-                        }
-                    });
-            RestAdapter restAdapter = restAdapterBuilder.build();
-            GithubMain githubMain = restAdapter.create(GithubMain.class);
+            Retrofit.Builder retrofitBuilder = new Retrofit.Builder();
+            retrofitBuilder
+                    .baseUrl("https://api.github.com")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(builder.build());
+            Retrofit retrofit = retrofitBuilder.build();
+            GithubMain githubMain = retrofit.create(GithubMain.class);
 
             return githubMain.getGithubMain();
         }

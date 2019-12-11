@@ -1,6 +1,7 @@
 package com.duk.lab.android.connection.retrofit.services;
 
-import retrofit.http.GET;
+
+import retrofit2.http.GET;
 
 /**
  * Created by dukwonnam on 2017. 2. 2..

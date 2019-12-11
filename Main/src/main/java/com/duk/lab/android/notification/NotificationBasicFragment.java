@@ -7,7 +7,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -195,7 +195,7 @@ public class NotificationBasicFragment extends Fragment implements View.OnClickL
     }
 
     private void setSimpleNotification(int notiType, int priority, String category, int visibility) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity());
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "");
 
         builder.setContentTitle("Content Title [priority]=" + priority)
                 .setContentText("Content Text [category]=" + category)
